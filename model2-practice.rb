@@ -142,4 +142,37 @@ end
 puts two_times_explicit + "_explicit"
 two_times_explicit {puts "Hello World"}
 
+puts "======Files example======"
+File.foreach('test.txt') do |line|
+	puts line
+	p line
+	p line.chomp #chop off newline charactor \n
+	p line.split #array of words in line
+end
 
+#Control Exception
+begin
+
+File.foreach('do_not_exit.txt') do |line|
+	puts line
+end
+rescue Exception => e
+	puts e.message
+	puts "Let's print this didn't happened"
+end
+
+#The best simple case of not beingable to find file
+if File.exist? 'do_not_exit.txt'
+	File.foreach('do_not_exit.txt') do |line|
+		puts line
+	end
+end
+
+#Write to the file
+File.open("test1.txt", "w") do |file|
+	file.puts "one line"
+	file.puts "another"
+end
+
+#Environment Variables
+puts ENV["EDITOR"]
