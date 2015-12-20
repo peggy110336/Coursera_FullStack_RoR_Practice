@@ -110,3 +110,36 @@ def max(one_param, *numbers, another)
 end
 
 puts max("Hello", 7,30,100, "HaHa")
+
+puts "======Blocks example======"
+1.times {puts "Hello World"} # ==> "Hello World"
+
+2.times do |index|
+	if index > 0
+		puts index
+	end
+end
+# ==> 1
+2.times { |index| puts index if index > 0}
+# ==> 1
+
+#Configure a block in your method
+#implicit
+def two_times_implicit
+	return "No Blocks" unless block_given?
+	yield
+	yield
+end
+
+two_times_implicit {puts "Hello World"}
+puts two_times_implicit + "_implicit"
+#Explicit
+def two_times_explicit(&i_am_a_block)
+	return "No Blocks" if i_am_a_block.nil?
+	i_am_a_block.call
+	i_am_a_block.call
+end
+puts two_times_explicit + "_explicit"
+two_times_explicit {puts "Hello World"}
+
+
