@@ -55,3 +55,58 @@ for i in 0..5
 	puts i
 end
 
+puts "======Methods example======"
+def simple
+	puts "no parens"
+end
+def simple1()
+	puts "yes parens"
+end
+
+simple()
+simple
+simple1
+
+#No need to declare type of parameter
+def add(one,two)
+	one + two
+end
+# Can return Everything you want
+def divide(one,two)
+	return "I don't think so" if two ==0
+	one / two
+end
+
+puts add(10,20)
+puts divide(10,0)
+puts divide(30,10)
+
+#merhod can be end with "?" and "!"
+def can_divide_by?(number)
+	return false if number.zero? 
+	true
+end
+
+puts can_divide_by? 3
+puts can_divide_by? 0
+
+#Can have default value
+def factorial (n)
+	n == 0? 1 : n * factorial(n-1)
+end
+def factorial_with_default (n = 5)
+	n == 0? 1 : n * factorial_with_default(n-1)
+end
+
+puts factorial 5
+puts factorial_with_default
+#雖然給了預設值，但如果在呼叫函數的時候又指定了參數，還是會以指定的為主。
+puts factorial_with_default(3) # ==> 6
+
+#Splat operator
+def max(one_param, *numbers, another)
+	#Variable length passed in become an array 
+	numbers.max
+end
+
+puts max("Hello", 7,30,100, "HaHa")
