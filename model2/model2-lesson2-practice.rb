@@ -28,7 +28,7 @@ puts my_name
 #查詢可用的API
 #"hello".methods.grep /case/ => 可使用的API裡包括”case“的
 
-puts "----Arrays----"
+puts "=====Arrays====="
 
 het_arr = [1, "two", :three] #複合型(heterogeneous)array
 puts het_arr[1]
@@ -80,8 +80,25 @@ new_arr = b.map {|x| x *3 }
 p new_arr # => [3,9,12,21,24,30]
 
 
+puts "=====Ranges====="
+some_range = 1..3
+#印出這個範圍的最大值
+puts some_range.max
+#boolean，是否包含2? => true
+puts some_range.include? 2
 
+puts (1...10) === 5.3
+puts ('a'...'r') === "r" # "..."，不包含最後的element
+#將這個範圍，轉為「陣列」，並隨機取出兩個element
+p ('k'..'z').to_a.sample(2)
 
+age = 55
+case age
+	when 0..12 then puts "Still a baby"
+	when 13..99 then puts "Teenager at hert!"
+	else puts "You are getting older..."
+end
+# => 複習case用法，結果為"Teenager at heart!"
 
 
 
