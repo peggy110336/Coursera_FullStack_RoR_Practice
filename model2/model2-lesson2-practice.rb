@@ -100,8 +100,49 @@ case age
 end
 # => 複習case用法，結果為"Teenager at heart!"
 
+puts "====Hashes===="
+# also known as associative arrays(關聯性的陣列)
+# 用法：Hashes_name = { "key" => "value", "key2" => "value2"}
 
+editor_props = { "font" => "Arial", "size" => "12", "color" => "blue"};
+puts editor_props.length # => 3
+puts editor_props["font"] #印出 key為font的vlue => Arial
 
+#直接設定Key 和 vlaue，並加入Hashes.
+#用法：Hashes_name["key"] = "value"
+editor_props["background"] = "blue" 
+
+#If Hashes is created with "Hash.new(0)" --> 0 is returned
+#If you try to access a value which doesn't exit --> nil is returned.
+
+put "Hashes API is imporant. The url is on assigement."
+
+#宣告一個Hash，裡面沒有東西。宣告一個句子，切割後，丟進去。尋找句子中小寫的單字為key，並將其value+1。
+#Note: Why +1 = 2? 原本Hash為0，丟句子進去後，找得到東西所以為1，在+1，所以值為2。
+word_frequency = Hash.new(0)
+
+sentence = "Chicka chicka boom boom"
+sentence,split.each do |word|
+	word_frequency[word.downcase] +=1
+end
+
+p word_frequency # => {"chicka" => 2, "boom" => 2}
+
+#If a Hash is the last argument to a method {} are "optional(常數)".
+# Named parameter "like" behavior... 
+def adjust_colors (props = {foreground: "red", background: "white"}) 
+  puts "Foreground: #{props[:foreground]}" if props[:foreground] 
+  puts "Background: #{props[:background]}" if props[:background] 
+end 
+adjust_colors # => foreground: red 
+              # => background: white 
+
+adjust_colors ({ :foreground => "green" }) # => foreground: green 
+
+# Note : 通常在Ruby，用第二個寫法來宣告Hash，比較常見。
+adjust_colors background: "yella" # => background: yella 
+
+adjust_colors :background => "magenta" # => background: magenta
 
 
 
