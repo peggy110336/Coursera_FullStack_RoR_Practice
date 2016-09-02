@@ -178,8 +178,8 @@ puts "====Class===="
 #self ==> liks Java's super. using it to call itself or local valuable.
 
 class Person 
-  attr_reader :age 
-  attr_accessor :name 
+  attr_reader :age #可讀
+  attr_accessor :name #可讀寫 
 
   def initialize (name, ageVar) # CONSTRUCTOR 
     @name = name 
@@ -219,7 +219,7 @@ class MathFunctions
   def self.double(var) # 1. Using self 
     times_called; var * 2; 
   end 
-  class << self # 2. Using << self 
+  class << self # 2. Using << self -->讓times_called成為類別方法。
     def times_called 
       @@times_called ||= 0; @@times_called += 1 
     end 
