@@ -340,11 +340,69 @@ module MyModule
     MyConstant = 'Inner Constant' 
     puts MyConstant # => Inner Constant 
   end
-  puts MyConstant # => Outer Constant 
+  puts MyConstant # => Outer Constant. It doesn't change.
 end
 
+puts "====Access Control===="
+# Three Level: 1.public 2.protected 3.private
+
+# private is private access? 
+class Person
+  def initialize(age)
+  	self.age = age # LEGAL - EXCEPTION。用self呼叫private函數，去設定age的值。
+  	puts my_age
+  	# puts self.my_age # ILLEGAL
+  	                   # CANNOT USE self or any other receiver
+  end
+
+  private 
+    def my_age
+    	@age
+    end
+    def age=(age)
+      @age = age
+    end
+end
+
+Person.new(25) # => 25
 
 
+# Encapsulation(封裝)
+class Car
+  def initialize(speed, comfort)
+    @rating = speed * comfort
+  end
+   
+  # Can't SET rating from outside
+  def rating #Getter
+    @rating
+  end
+end
+
+puts Car.new(4, 5).rating # => 20
+
+# Two way to specifying access control : 1.Specify control Key Word(Public,proteceted,privated) 2.Define the method.
+class MyAlgorithm  # define 的寫法
+  private
+    def test1
+      "Private"
+    end
+  protected
+    def test2
+      "Protected"
+    end
+  public
+    def public_again
+      "Public"
+    end
+end
+
+class Another # Specify key word的寫法
+  def test1
+    "Private, as declated later on"
+  end
+  private :test1
+end
 
 
 
