@@ -14,3 +14,6 @@ p "反轉陣列 #{arr.reverse}"
 # Start with the line below and continue as 1 long method chain
 # p arr.select { |element| element % 3 == 0 }
 
+num = (1..8)
+p num.select {|item| item % 2 == 0}
+p num.sort!

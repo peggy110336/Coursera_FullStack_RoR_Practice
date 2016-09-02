@@ -115,18 +115,19 @@ editor_props["background"] = "blue"
 #If Hashes is created with "Hash.new(0)" --> 0 is returned
 #If you try to access a value which doesn't exit --> nil is returned.
 
-put "Hashes API is imporant. The url is on assigement."
+puts "Hashes API is imporant. The url is on assigement."
 
 #宣告一個Hash，裡面沒有東西。宣告一個句子，切割後，丟進去。尋找句子中小寫的單字為key，並將其value+1。
 #Note: Why +1 = 2? 原本Hash為0，丟句子進去後，找得到東西所以為1，在+1，所以值為2。
 word_frequency = Hash.new(0)
 
 sentence = "Chicka chicka boom boom"
-sentence,split.each do |word|
+sentence.split.each do |word|
 	word_frequency[word.downcase] +=1
 end
 
 p word_frequency # => {"chicka" => 2, "boom" => 2}
+
 
 #If a Hash is the last argument to a method {} are "optional(常數)".
 # Named parameter "like" behavior... 
@@ -143,6 +144,73 @@ adjust_colors ({ :foreground => "green" }) # => foreground: green
 adjust_colors background: "yella" # => background: yella 
 
 adjust_colors :background => "magenta" # => background: magenta
+
+
+puts "----hash的寫法----"
+# Let's say you have a Hash 
+a_hash = { :one => "one" } 
+
+# Then, you output it 
+puts a_hash # => {:one=>"one"} 
+
+# If you try to do it in one step - you get a SyntaxError 
+# puts { :one => "one" } 
+
+# RUBY GETS CONFUSED AND THINKS {} IS A BLOCK!!!
+
+# To get around this - you can use parens 
+puts ({ :one => "one" }) # => {:one=>"one"} 
+
+# Or drop the {} altogether... 
+puts one: "one"# => {:one=>"one"} 
+
+
+
+
+puts "====Class===="
+#Being with @ ==>@name "name"'s instance valuable
+#Not declared(宣告) ==> Spiring into existence(存在) when first used.
+#Available to all instance methods of the class
+
+#"initialize" method is a special method likes Java's constuctor.
+#instance valuable is private. If you wnat to access,you have to define Getter and Setter methods.
+#Short form for setting and getting data => attr_
+#self ==> liks Java's super. using it to call itself or local valuable.
+
+class Person 
+  attr_reader :age 
+  attr_accessor :name 
+
+  def initialize (name, ageVar) # CONSTRUCTOR 
+    @name = name 
+    self.age = ageVar # call the age= method 
+    puts age 
+  end
+  
+  #def name   Getter 的另一種寫法。 
+   # @name 
+  #end 
+   
+  def age= (new_age)  # Setter的另一種寫法，這邊用來設定age的範圍（條件）
+    @age = new_age unless new_age > 120 
+  end
+
+  def get_info 
+    @additional_info = "Interesting" #設定local valuable.
+    "Name: #{@name}, age: #{@age}, You are #{@additional_info}." 
+  end  
+end 
+
+person1 = Person.new("Kim", 13) # => 13 
+puts "My age is #{person1.age}" # => My age is 13 
+person1.age = 130 # Try to change the age 
+puts person1.age # => 13 (The setter didn't allow the change)
+puts person1.get_info #Name: Kim, age: 13, You are Interesting.
+
+
+
+
+
 
 
 
