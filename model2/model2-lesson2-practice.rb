@@ -255,7 +255,54 @@ end
 dog = Dog.new # (btw, new is a class method) 
 small_dog = SmallDog.new 
 puts "#{dog}1 #{dog.bark}" # => Dog1 barks loudly 
-puts "#{small_dog}2 #{small_dog.bark}" # => Dog2 barks quietly 
+puts "#{small_dog}2 #{small_dog.bark}" # => Dog2 barks quietly
+
+
+puts "====Model===="
+# contaniner.我的感覺，像是函式庫。有完整的像下面所提的Enumerable. 或是自己定義之後再include.
+# require_relative ==>importing other .rb files
+# 兩種使用方式：1. NameSpace(自定義) 2.Mix-in(結合)
+# a very useful model ==> Enumerable. 
+
+# NameSpace的寫法
+module Sports 
+  class Match
+    attr_accessor :score 
+  end 
+end 
+
+module Patterns 
+  class Match 
+    attr_accessor :complete 
+  end 
+end 
+
+match1 = Sports::Match.new
+match1.score = 45; puts match1.score # => 45
+
+match2 = Patterns::Match.new
+match2.complete = true; puts match2.complete # => true
+
+#完整範例
+require_relative 'player' #importing other .rb files
+require_relative 'team'
+
+player1 = Player.new("Bob", 13, 5); player2 = Player.new("Jim", 15, 4.5) 
+player3 = Player.new("Mike", 21, 5) ; player4 = Player.new("Joe", 14, 5) 
+player5 = Player.new("Scott", 16, 3)
+
+red_team = Team.new("Red") 
+red_team.add_players(player1, player2, player3, player4, player5) # (splat) 
+
+# select only players between 14 and 20 and reject any player below 4.5 skill-level
+# team.rb includes Enumerable model. So,it can use some function which in it.
+elig_players = red_team.select {|player| (14..20) === player.age } 
+                       .reject {|player| player.skill_level < 4.5} 
+puts elig_players # => <Jim: 4.5(SL), 15(AGE)>
+				  # => <Joe: 5(SL), 14(AGE)>
+
+puts "====Scope===="
+
 
 
 
