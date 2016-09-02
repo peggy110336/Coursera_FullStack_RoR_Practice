@@ -8,14 +8,28 @@ class LineAnalyzer
   #* content          - the string analyzed (provided)
   #* line_number      - the line number analyzed (provided)
 
+  attr_reader :highest_wf_count,:highest_wf_words,:content,:line_number
+
   #Add the following methods in the LineAnalyzer class.
   #* initialize() - taking a line of text (content) and a line number
   #* calculate_word_frequency() - calculates result
+
+  def initialized(str_content,line_num)
+    self.content = str_content
+    self.line_number = line_number
+  end
+
+  def calculate_word_frequency()
+    "cal_word = #{highest_wf_words}"
+  end
 
   #Implement the initialize() method to:
   #* take in a line of text and line number
   #* initialize the content and line_number attributes
   #* call the calculate_word_frequency() method.
+
+  def take_line_text_num()
+  end
 
   #Implement the calculate_word_frequency() method to:
   #* calculate the maximum number of times a single word appears within
