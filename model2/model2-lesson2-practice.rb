@@ -209,6 +209,56 @@ puts person1.get_info #Name: Kim, age: 13, You are Interesting.
 
 
 
+puts "====Class inheritance===="
+# || operator. evaluate the left side. If true--return its,else--return right.
+# @@ ==> define class valuable
+# self OUTSIDE method refers to Class Object ==> likes Java's Static
+
+#以下是三種寫class的方式
+class MathFunctions 
+  def self.double(var) # 1. Using self 
+    times_called; var * 2; 
+  end 
+  class << self # 2. Using << self 
+    def times_called 
+      @@times_called ||= 0; @@times_called += 1 
+    end 
+  end 
+end 
+def MathFunctions.triple(var) # 3. Outside of class 
+  times_called; var * 3 
+end
+
+# No instance created! 
+#puts MathFunctions.times_called ==> 1
+puts MathFunctions.double(5) # => 10 
+#puts MathFunctions.times_called ==> 3
+puts MathFunctions.triple(3) # => 9 
+puts MathFunctions.times_called # => If run line 233 and 235,this will puts 5. If not it will puts 3. 
+
+
+# '<' ==>Denotes inheritance EX: SmallDog < Dogs
+class Dog 
+  def to_s 
+    "Dog" 
+  end 
+  def bark 
+    "barks loudly" 
+  end 
+end 
+class SmallDog < Dog 
+  def bark # Override 
+    "barks quietly" 
+  end 
+end 
+
+dog = Dog.new # (btw, new is a class method) 
+small_dog = SmallDog.new 
+puts "#{dog}1 #{dog.bark}" # => Dog1 barks loudly 
+puts "#{small_dog}2 #{small_dog.bark}" # => Dog2 barks quietly 
+
+
+
 
 
 
