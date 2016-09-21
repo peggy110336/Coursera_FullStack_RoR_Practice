@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #get 'gretter/hello'
-  get 'gertter/hello' => 'gretter#hello'
+  get 'gretter/hello' => 'gretter#hello'
   get 'gretter/goodbye' => 'gretter#goodbye'
 
   # The priority is based upon order of creation: first created -> highest priority.
