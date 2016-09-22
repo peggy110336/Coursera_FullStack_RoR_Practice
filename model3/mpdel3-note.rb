@@ -22,3 +22,11 @@ puts "helper is like a macro(巨集) or a formatter for the view."
 puts "<%= link_to [name_str], [path or url] %>."
 puts "The path can put url or relative path. The relative path is auto generate by rails.The format is [controller]_[view]_path."
 
+puts "RubyGems is a package manager."
+puts "HTTParty is a Restful web services client."
+puts "Bundler manage RubyGems.Lets you specify gems for this Rails app inside Gemfiel."
+puts "Gemfils.lock which contains the actual gem version."
+
+puts "cycle(Rails) helper."
+puts "Use params 'Hash' to retrieve the value."
+puts "設置root路徑：root [path] by tweaking routes.rb"

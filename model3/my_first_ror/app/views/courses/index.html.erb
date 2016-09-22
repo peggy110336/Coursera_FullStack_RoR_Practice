@@ -8,7 +8,8 @@
 	</tr>
 
 	<% @courses.each do |course| %>
-		<tr>
+		<!-- cycle(Rails)helper -->
+		<tr class= <%= cycle('even', 'odd')%>> 
 			<td><%= image_tag(course["smallIcon"])%></td>
 			<td><%= course["name"] %></td>
 			<td><%= course["shortDescription"] %></td>
