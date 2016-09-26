@@ -1,0 +1,18 @@
+<h1>Recipes#index</h1>
+<p>Find me in app/views/recipes/index.html.erb</p>
+
+<table>
+	<tr>
+		<td>Thumbnail</td>
+		<td>Title</td>
+		<td>Social Rank</td>
+	</tr>
+	<% @recipes.each do |recipe| %>
+		<!-- 下面要撈出食譜的資料，尚未修改。 -->
+		<tr> 
+			<td><%= image_tag(course["smallIcon"])%></td>
+			<td><%= course["name"] %></td>
+			<td><%= course["shortDescription"] %></td>
+		</tr>
+	<% end %>
+</table>
